@@ -44,10 +44,12 @@ function Book({ book, savedBookList, setSavedBookList }) {
           bookToDelete,
         )
         .then(res => {
-          setSavedBookList(res.data);
+          let newList = savedBookList.filter(
+            savedBook => savedBook.isbn !== bookToDelete.data.isbn,
+          );
+          setSavedBookList(newList);
         })
-        .catch(err => 
-          console.error(err));
+        .catch(err => console.error(err));
     }
   }, [bookToDelete, setSavedBookList, userId]);
 
@@ -91,7 +93,13 @@ function Book({ book, savedBookList, setSavedBookList }) {
         <Card.Content style={{ maxHeight: "300px" }}>
           <Card.Header onClick={openModal}>{book.title}</Card.Header>
           <Card.Meta onClick={openModal}>{book.author}</Card.Meta>
-          {localStorage.getItem("token") && <SaveIcon liked={liked} addToSavedList={addToSavedList} deleteFromSavedList={deleteFromSavedList}/>}
+          {localStorage.getItem("token") && (
+            <SaveIcon
+              liked={liked}
+              addToSavedList={addToSavedList}
+              deleteFromSavedList={deleteFromSavedList}
+            />
+          )}
         </Card.Content>
       </Card>
 
