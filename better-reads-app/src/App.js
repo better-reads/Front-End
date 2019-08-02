@@ -54,10 +54,6 @@ function App() {
         component={props => (
           <EditProfile
             {...props}
-            savedBookList={savedBookList}
-            setSavedBookList={setSavedBookList}
-            recommendedBooks={recommendedBooks}
-            setRecommendedBooks={setRecommendedBooks}
           />
         )}
       />
