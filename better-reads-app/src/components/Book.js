@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Card, Image, Container, Modal, Button, Icon } from "semantic-ui-react";
+import { Card, Image, Container, Modal, Button } from "semantic-ui-react";
 import BookModal from "./BookModal";
+import SaveIcon from "./SaveIcon";
 
 import { axiosWithAuth } from "../functions/authorization.js";
 
@@ -8,7 +9,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
   const [isModalOpen, setModalOpen] = useState(false);
   const [bookToSave, setBookToSave] = useState(null);
   const [bookToDelete, setBookToDelete] = useState(null);
-  const [liked, setLiked] = useState(false);
+  const [liked, setLiked] = useState(null);
 
   const userId = localStorage.getItem("user_id");
 
@@ -19,7 +20,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
       }
     }
     return setLiked(false);
-  }, [book.isbn, savedBookList]);
+  }, [book.isbn, liked, savedBookList]);
 
   useEffect(() => {
     if (bookToSave) {
@@ -29,10 +30,9 @@ function Book({ book, savedBookList, setSavedBookList }) {
           bookToSave,
         )
         .then(res => {
-          console.log(res);
           setSavedBookList(res.data);
         })
-        .catch(res => console.log(res));
+        .catch(err => console.error(err));
     }
   }, [bookToSave, setSavedBookList, userId]);
 
@@ -44,10 +44,10 @@ function Book({ book, savedBookList, setSavedBookList }) {
           bookToDelete,
         )
         .then(res => {
-          console.log(res);
           setSavedBookList(res.data);
         })
-        .catch(res => console.log(res));
+        .catch(err => 
+          console.error(err));
     }
   }, [bookToDelete, setSavedBookList, userId]);
 
@@ -62,7 +62,6 @@ function Book({ book, savedBookList, setSavedBookList }) {
   function deleteFromSavedList() {
     setBookToDelete(prevBook => {
       prevBook = { data: { isbn: `${book.isbn}` } };
-      console.log(prevBook);
       return prevBook;
     });
   }
@@ -92,16 +91,7 @@ function Book({ book, savedBookList, setSavedBookList }) {
         <Card.Content style={{ maxHeight: "300px" }}>
           <Card.Header onClick={openModal}>{book.title}</Card.Header>
           <Card.Meta onClick={openModal}>{book.author}</Card.Meta>
-          {/* {savedBookList.find(savedBook => savedBook.isbn === book.isbn) ? (
-            <Icon className="heart" onClick={deleteFromSavedList} />
-          ) : (
-            <Icon className="heart outline" onClick={addToSavedList} />
-          )} */}
-          {liked ? (
-            <Icon className="heart" color="red" onClick={deleteFromSavedList} />
-          ) : (
-            <Icon className="heart outline" onClick={addToSavedList} />
-          )}
+          {localStorage.getItem("token") && <SaveIcon liked={liked} addToSavedList={addToSavedList} deleteFromSavedList={deleteFromSavedList}/>}
         </Card.Content>
       </Card>
 

@@ -10,12 +10,22 @@ function SavedBooks({ savedBookList, setSavedBookList }) {
       .then(res => {
         setSavedBooks(res.data);
       })
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }, [userId]);
-
+  
   return (
     <div>
       <h1> Saved Books </h1>
+      <div
+      className="bookFlexWrapper"
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        margin: "40px auto",
+        maxWidth: "1000px",
+        padding: "0 20px",
+        justifyContent: "center",
+      }}>
       {savedBooks.map(savedBook => (
         <Book
           key={savedBook.id}
@@ -24,6 +34,7 @@ function SavedBooks({ savedBookList, setSavedBookList }) {
           setSavedBookList={setSavedBookList}
         />
       ))}
+      </div>
     </div>
   );
 }
