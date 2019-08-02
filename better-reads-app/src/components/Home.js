@@ -54,12 +54,18 @@ function Home({
         })
         .then(res => {
           setRecommendedBooks(res.data.list);
-          setSearchTerm("");
+          setSearchTerm(null);
           setIsLoading(false);
         })
         .catch(err => console.error(err));
     }
   }, [searchTerm, setRecommendedBooks]);
+
+  useEffect(()=> {
+    if (searchInput === "") {
+      setRecommendedBooks([]);
+    }
+  },[searchInput, setRecommendedBooks])
 
   // get users savedbooklist
   useEffect(() => {
