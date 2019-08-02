@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Image } from "semantic-ui-react";
 
 function Footer(props) {
@@ -7,11 +8,11 @@ function Footer(props) {
       <div className="footer">
         {/* <div> */}
         <div className="logo">
-          <Image
+        <Link to="/"><Image
             className="logo__img"
             alt="betterreads logo"
             src={require("../imgs/br-logo.png")}
-          />
+          /></Link>
         </div>
         {/* </div> */}
 

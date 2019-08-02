@@ -12,11 +12,11 @@ function Nav(props) {
     return (
       <nav className="navigation">
         <div className="logo">
-          <Image
+        <Link to="/"><Image
             className="logo__img"
             alt="betterreads logo"
             src={require("../imgs/br-logo.png")}
-          />
+          /></Link>
         </div>
         <div className="nav-links">
           <Link to="/"> Search</Link>
@@ -33,11 +33,11 @@ function Nav(props) {
     return (
       <nav className="navigation">
         <div className="logo">
-          <Image
+        <Link to="/"><Image
             className="logo__img"
             alt="betterreads logo"
             src={require("../imgs/br-logo.png")}
-          />
+          /></Link>
         </div>
         <div className="nav-links">
           <Link to="/"> Search</Link>
