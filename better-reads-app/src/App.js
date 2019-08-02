@@ -55,6 +55,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
 
+<<<<<<< HEAD
         <PrivateRoute
           exact
           path="/saved_books"
@@ -81,6 +82,30 @@ function App() {
             />
           )}
         />
+=======
+      <PrivateRoute
+        exact
+        path="/saved_books"
+        component={props => (
+          <SavedBooks
+            {...props}
+            savedBookList={savedBookList}
+            setSavedBookList={setSavedBookList}
+            recommendedBooks={recommendedBooks}
+            setRecommendedBooks={setRecommendedBooks}
+          />
+        )}
+      />
+      <PrivateRoute
+        exact
+        path="/edit_profile"
+        component={props => (
+          <EditProfile
+            {...props}
+          />
+        )}
+      />
+>>>>>>> 09422aa363a1af7dcea4606d44bd794b089f27c0
       </div>
       <Footer />
     </div>

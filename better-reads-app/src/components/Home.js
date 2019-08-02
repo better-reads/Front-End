@@ -54,13 +54,34 @@ function Home({
         })
         .then(res => {
           setRecommendedBooks(res.data.list);
-          setSearchTerm("");
+          setSearchTerm(null);
           setIsLoading(false);
         })
         .catch(err => console.error(err));
     }
   }, [searchTerm, setRecommendedBooks]);
 
+<<<<<<< HEAD
+=======
+  useEffect(()=> {
+    if (searchInput === "") {
+      setRecommendedBooks([]);
+    }
+  },[searchInput, setRecommendedBooks])
+
+  // get users savedbooklist
+  useEffect(() => {
+    if (localStorage.getItem("user_id")) {
+      axios
+        .get(`https://better-reads-db.herokuapp.com/api/users/list/${userId}`)
+        .then(res => {
+          setSavedBookList(res.data);
+        })
+        .catch(err => console.error(err));
+    }
+  }, [setSavedBookList, userId]);
+
+>>>>>>> 09422aa363a1af7dcea4606d44bd794b089f27c0
   return (
     <div style={{ minHeight: "80vh" }}>
       <Wrapper>
