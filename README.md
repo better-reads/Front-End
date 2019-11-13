@@ -1,7 +1,9 @@
 # Better Reads Front-End
-![better-reads-demo](https://better-reads-marketing.netlify.com/img/BR-mockups/BR%20mockups/laptop-ssearch-low.png)
+Better reads used Natural Language Processing and OpenLibrary.org to find books based on your description of the book. As opposed to a normal search by author or genre. It also provided the ability to save books by account. So you could login and see books you've saved.
+Link to live project: https://better-reads.netlify.com/ However, our data science team has taken down their Flask server, so the search/recommendation system no longer operates. You can still click around, but the search feature doesnt operate.
 
-Link to live project: https://better-reads.netlify.com/ (Our data science team has taken down their Flask server, so the recommendation system no longer operates.)
+![better-reads-image](https://better-reads-marketing.netlify.com/img/BR-mockups/BR%20mockups/laptop-ssearch-low.png)
+![better-reads-demo](https://thumbs.gfycat.com/GeneralScholarlyGander-size_restricted.gif)
 
 ## Technologies
 
