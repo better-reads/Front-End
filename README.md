@@ -19,7 +19,7 @@ Link to live project: https://better-reads.netlify.com/ However, our data scienc
 </table>
 
 Front-End Team:
-* [Justine] (https://github.com/JustineFR)
+* [Justine](https://github.com/JustineFR)
 * [Marcus](https://github.com/marcuskwan)
 * [Seth](htt[s://github.com/projectlewis)
 * [Sierra](https://github.com/SierraOG)
